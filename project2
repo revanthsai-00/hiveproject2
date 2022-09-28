@@ -69,6 +69,21 @@ CHEVR   714654
 114     289950
 
 4.) Find the violation code frequency across 3 precincts which have issued the most number of tickets - do these precinct zones have an exceptionally high frequency of certain violation codes?
+ with cte as (select violationcode,issuerprecint,count(issuerprecint) as cv from parkingviolation group by issuerprecint,violationcode order by cv desc limit 50),cte2 as (select violationcode,max(cv) as mv from cte group by violationcode) select cte2.violationcode,issuerprecint,cv from cte inner join cte2 on cte.cv=cte2.mv ;
+36      0       1400614
+7       0       516389
+21      0       268587
+5       0       145642
+14      18      91486
+46      19      86386
+37      19      72437
+38      19      72343
+69      14      58025
+31      14      39857
+16      1       38937
+47      14      30540
+20      1       27841
+
 5.) Find out the properties of parking violations across different times of the day: The Violation Time field is specified in a strange format. Find a way to make this into a time attribute that you can use to divide into groups.
 6.) Divide 24 hours into 6 equal discrete bins of time. The intervals you choose are at your discretion. For each of these groups, find the 3 most commonly occurring violations
 7.) Now, try another direction. For the 3 most commonly occurring violation codes, find the most common times of day (in terms of the bins from the previous part)
