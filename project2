@@ -14,6 +14,8 @@ Part-I: Examine the data
 
 1.) Find the total number of tickets for the year.
 2.) Find out how many unique states the cars which got parking tickets came from.
+select count(distinct registrationstat) from parkingvilation;
+95
 
 3.) Some parking tickets don’t have addresses on them, which is cause for concern. Find out how many such tickets there are(i.e. tickets where either "Street Code 1" or "Street Code 2" or "Street Code 3" is empty )
 3667515
